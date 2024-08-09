@@ -1,4 +1,6 @@
 import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/providers/ThemeProveder'
+import { Toaster } from '@/shared/ui/sonner'
 import Header from '@/widgets/layout/Header'
 import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
@@ -23,15 +25,23 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body
-				className={cn(
-					'min-h-screen bg-background font-sans antialiased p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 mx-auto',
-					fontSans.variable
-				)}
+			<ThemeProvider
+				attribute='class'
+				defaultTheme='system'
+				enableSystem
+				disableTransitionOnChange
 			>
-				<Header />
-				<main>{children}</main>
-			</body>
+				<body
+					className={cn(
+						'min-h-screen bg-background font-sans antialiased p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 mx-auto',
+						fontSans.variable
+					)}
+				>
+					<Header />
+					<main>{children}</main>
+					<Toaster />
+				</body>
+			</ThemeProvider>
 		</html>
 	)
 }
