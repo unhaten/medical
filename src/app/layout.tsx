@@ -25,23 +25,25 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<ThemeProvider
-				attribute='class'
-				defaultTheme='system'
-				enableSystem
-				disableTransitionOnChange
+			<body
+				className={cn(
+					'min-h-screen bg-background font-sans antialiased',
+					fontSans.variable
+				)}
 			>
-				<body
-					className={cn(
-						'min-h-screen bg-background font-sans antialiased p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 mx-auto',
-						fontSans.variable
-					)}
-				>
-					<Header />
-					<main>{children}</main>
-					<Toaster />
-				</body>
-			</ThemeProvider>
+				<div className='p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 mx-auto'>
+					<ThemeProvider
+						attribute='class'
+						defaultTheme='system'
+						enableSystem
+						disableTransitionOnChange
+					>
+						<Header />
+						<main>{children}</main>
+						<Toaster />
+					</ThemeProvider>
+				</div>
+			</body>
 		</html>
 	)
 }
