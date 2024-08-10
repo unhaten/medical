@@ -4,6 +4,7 @@ import { Toaster } from '@/shared/ui/sonner'
 import Header from '@/widgets/layout/Header'
 import type { Metadata } from 'next'
 // import { Inter as FontSans } from 'next/font/google'
+import Sidebar from '@/widgets/layout/Sidebar'
 import localFont from 'next/font/local'
 import './globals.css'
 
@@ -62,7 +63,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body
 				className={cn(
-					'min-h-screen bg-background antialiased',
+					'min-h-screen bg-background antialiased relative',
 					localMontserrat.className
 				)}
 			>
@@ -74,7 +75,12 @@ export default function RootLayout({
 						disableTransitionOnChange
 					>
 						<Header />
-						<main className='mt-10'>{children}</main>
+						<div className='grid grid-cols-7 gap-10 mt-10'>
+							<Sidebar />
+							<main className='col-span-7 md:col-span-5'>
+								{children}
+							</main>
+						</div>
 						<Toaster />
 					</ThemeProvider>
 				</div>

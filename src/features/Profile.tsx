@@ -10,7 +10,7 @@ const Profile = () => {
 				<AvatarImage src='#' />
 				<AvatarFallback>AV</AvatarFallback>
 			</Avatar>
-			<div className='gap-6 lg:gap-10 justify-between items-center hidden md:flex'>
+			<div className='gap-6 lg:gap-10 justify-between items-center hidden sm:flex'>
 				<div className=''>
 					<p className=''>Nicolas Doyle</p>
 					<Separator className='my-0.5' />
